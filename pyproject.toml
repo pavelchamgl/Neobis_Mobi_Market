@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "mobi-market"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Ivanov <pavel.ivanov.060988@gmail.com>"]
+readme = "README.md"
+packages = [{include = "mobi_market"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.2"
+djangorestframework = "^3.14.0"
+python-dotenv = "^1.0.0"
+psycopg2 = "^2.9.6"
+psycopg2-binary = "^2.9.6"
+gunicorn = "^20.1.0"
+django-cors-headers = "^4.0.0"
+drf-yasg = "^1.21.5"
+pillow = "^9.5.0"
+firebase = "^4.0.1"
+djangorestframework-simplejwt = "^5.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
