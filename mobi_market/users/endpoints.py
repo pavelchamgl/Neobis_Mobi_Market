@@ -69,7 +69,7 @@ class SetPhoneNumberAPIView(APIView):
             400: 'Bad Request'
         }
     )
-    def post(self, request, *args, **kwargs):
+    def put(self, request, *args, **kwargs):
         user = request.user
         serializer = PhoneNumberSerializer(user, data=request.data)
         serializer.is_valid(raise_exception=True)
