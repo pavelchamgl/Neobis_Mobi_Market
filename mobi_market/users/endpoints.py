@@ -30,19 +30,26 @@ class UserCreateAPIView(CreateAPIView):
 class UserProfileAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
-    # @swagger_auto_schema(
-    #     request_body=UserProfileSerializer,
-    #     operation_description="This endpoint return user and update user profile.",
-    #     responses={
-    #         200: 'User profile update successfully',
-    #         400: 'Bad Request'
-    #     }
-    # )
+    @swagger_auto_schema(
+        operation_description="This endpoint return user profile.",
+        responses={
+            200: UserProfileSerializer,
+            400: 'Bad Request'
+        }
+    )
     def get(self, request):
         user = request.user
         serializer = UserProfileSerializer(user)
         return Response(serializer.data)
 
+    @swagger_auto_schema(
+        request_body=UserProfileSerializer,
+        operation_description="This endpoint update user profile.",
+        responses={
+            200: 'User profile update successfully',
+            400: 'Bad Request'
+        }
+    )
     def put(self, request):
         user = request.user
         serializer = UserProfileSerializer(user, data=request.data)
