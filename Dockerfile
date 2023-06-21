@@ -1,4 +1,4 @@
-FROM  python:3.10-slim-buster
+FROM python:3.10
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
@@ -8,8 +8,8 @@ COPY poetry.lock pyproject.toml /mobi_market/
 RUN pip install -U pip && \
     pip install poetry && \
     poetry config virtualenvs.create false && \
-    poetry install --only=main --no-root
+    poetry install --no-root
 COPY . ./
 COPY ../.env ./.env
 EXPOSE 8000
-ENTRYPOINT [ "bash", "-c", "/mobi_market/entrypoint.sh"]
+ENTRYPOINT [ "bash", "-c", "./entrypoint.sh"]
