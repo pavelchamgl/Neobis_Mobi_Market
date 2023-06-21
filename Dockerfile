@@ -1,4 +1,4 @@
-FROM  python:3.10
+FROM  python:3.10-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
@@ -8,7 +8,7 @@ COPY poetry.lock pyproject.toml /mobi_market/
 RUN pip install -U pip && \
     pip install poetry && \
     poetry config virtualenvs.create false && \
-    poetry install
+    poetry install --only=main --no-root
 COPY . ./
 COPY ../.env ./.env
 EXPOSE 8000

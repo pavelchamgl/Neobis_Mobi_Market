@@ -1,1 +1,1 @@
-cd mobi_market; python manage.py migrate; python manage.py runserver 0.0.0.0:8000;
+cd mobi_market; python manage.py collectstatic --no-input; python manage.py migrate; python manage.py runserver 0.0.0.0:8000;
