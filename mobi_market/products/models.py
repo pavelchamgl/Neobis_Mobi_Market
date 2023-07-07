@@ -10,6 +10,13 @@ class CardItem(models.Model):
     images = models.ImageField(upload_to="mobi_market/card_items/", blank=True, null=True)
     short_description = models.CharField(max_length=150)
     detailed_description = models.TextField()
+    likes = models.ManyToManyField(User, related_name='liked_card_products', blank=True)
+
+    def total_likes(self):
+        return self.likes.count()
+
+    def user_like(self, user):
+        return self.likes.filter(pk=user.pk).exists()
 
     def __str__(self):
         return f"id: {self.pk} - user_id: {self.user_id} - title{self.title}"
